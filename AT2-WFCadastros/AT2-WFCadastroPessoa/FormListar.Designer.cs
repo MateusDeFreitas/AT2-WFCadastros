@@ -32,7 +32,10 @@
             principalToolStripMenuItem = new ToolStripMenuItem();
             cadastrarToolStripMenuItem = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
+            dataGridView1 = new DataGridView();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -65,16 +68,38 @@
             sairToolStripMenuItem.Text = "Sair";
             sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20F);
+            label1.Location = new Point(280, 60);
+            label1.Name = "label1";
+            label1.Size = new Size(227, 37);
+            label1.TabIndex = 5;
+            label1.Text = "Lista de cadastros";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(12, 118);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(776, 320);
+            dataGridView1.TabIndex = 6;
+            // 
             // FormListar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
+            Controls.Add(label1);
             Controls.Add(menuStrip1);
             Name = "FormListar";
             Text = "FormListar";
+            Load += FormListar_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -85,5 +110,7 @@
         private ToolStripMenuItem cadastrarToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem;
         private ToolStripMenuItem principalToolStripMenuItem;
+        private Label label1;
+        private DataGridView dataGridView1;
     }
 }

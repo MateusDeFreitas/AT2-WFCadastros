@@ -17,7 +17,7 @@ namespace AT2_WFCadastroPessoa
         public string celular { get; set; }
         public bool possuiFilhos { get; set; }
 
-        private static List<Pessoas> ListaPessoas = new List<Pessoas>();
+        public static List<Pessoas> ListaPessoas = new List<Pessoas>();
 
         public static void AdicionarPessoa(Pessoas pessoa)
         {

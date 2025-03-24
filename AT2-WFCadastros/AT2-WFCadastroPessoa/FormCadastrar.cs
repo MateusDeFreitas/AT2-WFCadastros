@@ -52,31 +52,75 @@ namespace AT2_WFCadastroPessoa
         private void button2_Click(object sender, EventArgs e)
         {
 
-            Pessoas pessoa1 = new Pessoas
+            if (textCod.Text == "")
             {
-                codigo = textCod.Text,
-                nomeCompleto = textNome.Text,
-                cpf = textCPF.Text,
-                email = textEmail.Text,
-                tipoTelefone = textTelefone.Text.Substring(1, 3),
-                ddd = textTelefone.Text.Substring(6),
-                celular = textTelefone.Text,
-                possuiFilhos = checkBoxFilhos.Checked
-            };
-            
-            Pessoas.AdicionarPessoa(pessoa1);
+                MessageBox.Show("Por favor, preencha o campo código corretamente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (textNome.Text == "")
+            {
+                MessageBox.Show("Por favor, preencha o campo nome corretamente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (textCPF.Text == "")
+            {
+                MessageBox.Show("Por favor, preencha o campo CPF corretamente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (textEmail.Text == "")
+            {
+                MessageBox.Show("Por favor, preencha o campo email corretamente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (textTelefone.Text == "")
+            {
+                MessageBox.Show("Por favor, preencha o campo telefone corretamente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!radioComercial.Checked && !radioPessoal.Checked && !radioRecado.Checked)
+            {
+                MessageBox.Show("Por favor, preencha o campo tipo de telefone corretamente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string opcaoRadio = "";
 
-            textCod.Text = "";
-            textNome.Text = "";
-            textCPF.Text = "";
-            textEmail.Text = "";
-            textTelefone.Text = "";
+                if (radioComercial.Checked)
+                {
+                    opcaoRadio = "Comercial";
+                }
+                else if(radioPessoal.Checked)
+                {
+                    opcaoRadio = "Pessoal";
+                }
+                else if (radioRecado.Checked)
+                {
+                    opcaoRadio = "Recado";
+                }
 
-            checkBoxFilhos.Checked = false;
+                    Pessoas pessoa1 = new Pessoas
+                    {
+                        codigo = textCod.Text,
+                        nomeCompleto = textNome.Text,
+                        cpf = textCPF.Text,
+                        email = textEmail.Text,
+                        tipoTelefone = textTelefone.Text.Substring(1, 2),
+                        ddd = textTelefone.Text.Substring(5),
+                        celular = textTelefone.Text,
+                        possuiFilhos = checkBoxFilhos.Checked
+                    };
 
-            radioPessoal.Checked = false;   
-            radioComercial.Checked = false;
-            radioRecado.Checked = false;
+                Pessoas.AdicionarPessoa(pessoa1);
+
+                textCod.Text = "";
+                textNome.Text = "";
+                textCPF.Text = "";
+                textEmail.Text = "";
+                textTelefone.Text = "";
+
+                checkBoxFilhos.Checked = false;
+
+                radioPessoal.Checked = false;
+                radioComercial.Checked = false;
+                radioRecado.Checked = false;
+
+                MessageBox.Show("O registro foi criado cm sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
